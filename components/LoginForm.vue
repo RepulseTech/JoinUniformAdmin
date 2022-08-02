@@ -1,29 +1,9 @@
 <script setup lang="ts">
-const { auth } = useSupabaseClient()
+import { storeToRefs } from 'pinia'
 
-const email = $ref('')
-const password = $ref('')
-
-let loading = $ref(false)
-let errorText = $ref('')
-
-async function handleLogin() {
-  try {
-    errorText = ''
-    loading = true
-    const { error } = await auth.signIn({ email, password })
-    if (error)
-      throw error
-
-    await navigateTo('/')
-  }
-  catch (error: any) {
-    errorText = error.message
-  }
-  finally {
-    loading = false
-  }
-}
+const authStore = useAuthStore()
+const { email, password, loading, errorText } = storeToRefs(authStore)
+const { handleLogin } = authStore
 </script>
 
 <template>
