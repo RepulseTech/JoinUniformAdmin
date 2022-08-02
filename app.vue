@@ -1,6 +1,7 @@
 <script setup>
+import '~/assets/css/tailwind.css'
 useHead({
-  title: 'Vitesse Nuxt 3',
+  title: 'Admin Panel - JoinUniform',
   link: [
     {
       rel: 'icon', type: 'image/png', href: '/nuxt.png',
@@ -10,13 +11,15 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout cl>
+  <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 </template>
 
 <style>
-html, body , #__nuxt{
+html,
+body,
+#__nuxt {
   height: 100vh;
   margin: 0;
   padding: 0;
