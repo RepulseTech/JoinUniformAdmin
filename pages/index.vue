@@ -13,7 +13,7 @@ const handleLogout = async () => {
   try {
     loading.value = true
     await client.auth.signOut()
-    await navigateTo('/login')
+    await navigateTo('/login', { replace: true })
   }
   catch (error) {
     // eslint-disable-next-line no-alert

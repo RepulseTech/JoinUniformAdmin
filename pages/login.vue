@@ -10,7 +10,7 @@ const { auth } = useSupabaseClient()
 
 watchEffect(() => {
   if (user.value)
-    navigateTo('/')
+    navigateTo('/', { replace: true })
 })
 
 const loading = ref(false)
