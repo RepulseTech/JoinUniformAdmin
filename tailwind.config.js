@@ -10,7 +10,7 @@ module.exports = {
     'app.{js,ts,vue}',
   ],
   presets: [],
-  darkMode: 'class', // or 'class'
+  darkMode: 'media', // or 'class'
   theme: {
     screens: {
       'sm': '640px',
@@ -940,6 +940,11 @@ module.exports = {
       30: '30',
       40: '40',
       50: '50',
+    },
+    extend: {
+      fontFamily: {
+        sans: ['Work Sans'],
+      },
     },
   },
   variantOrder: [

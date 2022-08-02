@@ -1,4 +1,5 @@
 <script setup>
+import '@fontsource/work-sans'
 import '~/assets/css/tailwind.css'
 useHead({
   title: 'Admin Panel - JoinUniform',
@@ -11,9 +12,11 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div class="antialiased">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
 
 <style>
