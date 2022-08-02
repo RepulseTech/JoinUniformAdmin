@@ -11,8 +11,8 @@ watchEffect(() => {
 })
 
 const loading = ref(false)
-const email = ref('')
-const password = ref('')
+const email = ref('admin@joinuniform.com')
+const password = ref('Test1234!')
 
 const handleLogin = async () => {
   try {

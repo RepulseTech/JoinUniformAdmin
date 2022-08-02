@@ -3,6 +3,7 @@
   "packageManager": "pnpm@7.5.0",
   "scripts": {
     "build": "nuxi build",
+    "build:cf": "cross-env NITRO_PRESET=cloudflare nuxi build",
     "dev": "nuxi dev",
     "start": "node .output/server/index.mjs",
     "lint": "eslint .",
@@ -10,25 +11,25 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
-    "@fontsource/work-sans": "^4.5.1",
+    "@fontsource/work-sans": "^4.5.10",
     "@headlessui/vue": "^1.6.7",
-    "@iconify-json/carbon": "^1.1.6",
-    "@iconify-json/twemoji": "^1.1.5",
+    "@iconify-json/carbon": "^1.1.7",
     "@iconify-json/heroicons-outline": "^1.1.2",
     "@iconify-json/heroicons-solid": "^1.1.2",
+    "@iconify-json/twemoji": "^1.1.5",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/supabase": "^0.1.19",
     "@nuxtjs/tailwindcss": "^5.3.1",
-    "@pinia/nuxt": "^0.3.0",
+    "@pinia/nuxt": "^0.3.1",
     "@tailwindcss/typography": "^0.5.4",
-    "@unocss/nuxt": "^0.44.5",
-    "@vueuse/nuxt": "^8.9.4",
+    "@vueuse/nuxt": "^9.0.2",
+    "autoprefixer": "^10.4.8",
+    "cross-env": "^7.0.3",
     "daisyui": "^2.20.0",
-    "eslint": "^8.20.0",
-    "autoprefixer": "^10.4.7",
+    "eslint": "^8.21.0",
     "nuxt": "^3.0.0-rc.6",
-    "pinia": "^2.0.16",
+    "pinia": "^2.0.17",
     "typescript": "^4.7.4",
-    "unplugin-icons": "^0.14.7"
+    "unplugin-icons": "^0.14.8"
   }
 }

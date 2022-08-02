@@ -3,8 +3,8 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/supabase',
     [
@@ -30,16 +30,8 @@ export default defineNuxtConfig({
     ssrHandlers: true,
   },
   colorMode: {
+    preference: 'light',
     classSuffix: '',
-  },
-  runtimeConfig: {
-    supabaseUrl: process.env.SUPABASE_URL,
-    supabaseKey: process.env.SUPABASE_KEY,
-    public: {
-      publicUrl: process.env.PUBLIC_URL,
-      supabaseUrl: process.env.SUPABASE_URL,
-      supabaseKey: process.env.SUPABASE_KEY,
-    },
   },
   build: {
     postcss: {
@@ -49,6 +41,15 @@ export default defineNuxtConfig({
           autoprefixer: {},
         },
       },
+    },
+  },
+  hooks: {
+    'vite:extendConfig': function (config: any, { isServer }: any) {
+      if (isServer) {
+        // Workaround for netlify issue
+        // https://github.com/nuxt/framework/issues/6204
+        config.build.rollupOptions.output.inlineDynamicImports = true
+      }
     },
   },
 })
