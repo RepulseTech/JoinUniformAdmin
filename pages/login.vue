@@ -4,6 +4,7 @@ definePageMeta({
 })
 const user = useSupabaseUser()
 const { auth } = useSupabaseClient()
+const route = useRoute()
 
 watchEffect(() => {
   if (user.value)
@@ -17,7 +18,7 @@ const password = ref('')
 const handleLogin = async () => {
   try {
     loading.value = true
-    const { error } = await auth.signIn({ email: email.value, password: password.value })
+    const { error } = await auth.signIn({ email: email.value, password.value }, { redirectTo: `http://localhost:3000${route.query?.redirect || ''}` })
     if (error)
       throw error
   }

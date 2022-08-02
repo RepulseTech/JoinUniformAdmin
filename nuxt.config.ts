@@ -26,6 +26,9 @@ export default defineNuxtConfig({
     reactivityTransform: true,
     viteNode: false,
   },
+  vueuse: {
+    ssrHandlers: true,
+  },
   colorMode: {
     classSuffix: '',
   },
