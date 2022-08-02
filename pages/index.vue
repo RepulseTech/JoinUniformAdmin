@@ -3,6 +3,10 @@ definePageMeta({
   middleware: 'auth',
 })
 const user = useSupabaseUser()
+watchEffect(() => {
+  if (!user.value)
+    navigateTo('/login', { replace: true })
+})
 const { handleLogout } = useAuthStore()
 </script>
 

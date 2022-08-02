@@ -17,8 +17,6 @@ export const useAuthStore = defineStore('auth', () => {
       const { error } = await auth.signIn({ email: email.value, password: password.value })
       if (error)
         throw error
-
-      await navigateTo('/', { replace: true })
     }
     catch (error: any) {
       errorText.value = error.message
@@ -31,7 +29,6 @@ export const useAuthStore = defineStore('auth', () => {
   async function handleLogout() {
     try {
       await auth.signOut()
-      await navigateTo('/login', { replace: true })
     }
     catch (error: any) {
       errorText.value = error.message
