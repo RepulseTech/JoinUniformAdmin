@@ -7,11 +7,17 @@
     "dev": "nuxi dev",
     "start": "node .output/server/index.mjs",
     "lint": "eslint .",
-    "postinstall": "nuxi prepare"
+    "postinstall": "nuxi prepare",
+    "generate": "graphql-codegen"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
     "@fontsource/work-sans": "^4.5.10",
+    "@graphql-codegen/add": "^3.2.0",
+    "@graphql-codegen/cli": "^2.11.3",
+    "@graphql-codegen/typescript": "^2.7.2",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.2",
+    "@graphql-codegen/typescript-operations": "^2.5.2",
     "@headlessui/vue": "^1.6.7",
     "@iconify-json/carbon": "^1.1.7",
     "@iconify-json/heroicons-outline": "^1.1.2",
@@ -31,5 +37,9 @@
     "pinia": "^2.0.17",
     "typescript": "^4.7.4",
     "unplugin-icons": "^0.14.8"
+  },
+  "dependencies": {
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0"
   }
 }

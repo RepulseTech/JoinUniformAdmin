@@ -52,4 +52,9 @@ export default defineNuxtConfig({
       }
     },
   },
+  runtimeConfig: {
+    public: {
+      GQL_HOST: process.env.GRAPHQL_URL, // overwritten by process.env.GQL_HOST
+    },
+  },
 })

@@ -1,0 +1,22 @@
+query users {
+  users(filter: { email: { notLike: "admin@joinuniform.com" } }) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        email
+        phone
+        lastSignInAt
+        rawUserMetaData
+        created
+        updated
+      }
+    }
+  }
+}
