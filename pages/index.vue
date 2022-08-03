@@ -16,7 +16,7 @@ await usersStore.initUsers()
   <div class="italic flex flex-col gap-4 items-center mb-8">
     <code v-if="me" class="animate-pulse">{{ me?.email }}</code>
     <p v-if="loading">
-      Loading...
+      Loading....
     </p>
     <div v-for="user in users" v-else :key="user.id">
       <p>
