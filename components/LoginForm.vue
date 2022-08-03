@@ -7,7 +7,7 @@ const { handleLogin } = authStore
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="flex items-center justify-center min-h-screen bg-base-200">
     <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg rounded-lg">
       <div class="flex justify-center">
         <img class="h-20 w-20" src="~/assets/img/logo.svg" alt="JoinUniform SVG">

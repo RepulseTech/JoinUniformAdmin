@@ -5,9 +5,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const email = ref('')
   const password = ref('')
-
   const loading = ref(false)
-
   const errorText = ref('')
 
   async function handleLogin() {
