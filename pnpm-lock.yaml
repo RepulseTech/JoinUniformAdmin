@@ -32,7 +32,6 @@ specifiers:
   unplugin-icons: ^0.14.8
 
 dependencies:
-  '@vueuse/components': 9.1.0
   graphql: 16.5.0
   graphql-request: 4.3.0_graphql@16.5.0
 
@@ -54,6 +53,7 @@ devDependencies:
   '@nuxtjs/tailwindcss': 5.3.1
   '@pinia/nuxt': 0.3.1_typescript@4.7.4
   '@tailwindcss/typography': 0.5.4
+  '@vueuse/components': 9.1.0
   '@vueuse/nuxt': 9.0.2
   autoprefixer: 10.4.8
   cross-env: 7.0.3
@@ -2119,6 +2119,7 @@ packages:
 
   /@types/web-bluetooth/0.0.15:
     resolution: {integrity: sha512-w7hEHXnPMEZ+4nGKl/KDRVpxkwYxYExuHOYXyzIzCDzEZ9ZCGMAewulr9IqJu2LR4N37fcnb1XVeuZ09qgOxhA==}
+    dev: true
 
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
@@ -2413,7 +2414,7 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
+    dev: true
 
   /@vueuse/core/9.0.2:
     resolution: {integrity: sha512-kOIqaQPSs7OSByWg1ulEKRUJbsq3FmbJiUr0RhEKpt3O1Uhl4DrDj85DUbQBABVYgPvSaY6AE/fP3/FOcRIOoQ==}
@@ -2437,7 +2438,7 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
+    dev: true
 
   /@vueuse/head/0.7.6_vue@3.2.37:
     resolution: {integrity: sha512-cOWqCkT3WiF5oEpw+VVEWUJd9RLD5rc7DmnFp3cePsejp+t7686uKD9Z9ZU7Twb7R/BI8iexKTmXo9D/F3v6UA==}
@@ -2453,7 +2454,7 @@ packages:
 
   /@vueuse/metadata/9.1.0:
     resolution: {integrity: sha512-8OEhlog1iaAGTD3LICZ8oBGQdYeMwByvXetOtAOZCJOzyCRSwqwdggTsmVZZ1rkgYIEqgUBk942AsAPwM21s6A==}
-    dev: false
+    dev: true
 
   /@vueuse/nuxt/9.0.2:
     resolution: {integrity: sha512-1NYT3DC58fZ0YxFGaGZ4V0uAd3E4YMMnalKd1K1HBvrW3exB9zcBW52spKMspZL9dnNlxyv3TauH52b94fMxqg==}
@@ -2489,7 +2490,7 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
+    dev: true
 
   /@whatwg-node/fetch/0.2.7:
     resolution: {integrity: sha512-AYU3W9q6qIkSlJOLAjBdOeMuWZwaPy7eeDhl2uG0udMRwO6+CVfAa/hG/kMX1Zp0wH2plhOm4eJrWtuf4f2+2A==}
@@ -9238,6 +9239,7 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+    dev: true
 
   /vue-eslint-parser/9.0.3_eslint@8.21.0:
     resolution: {integrity: sha512-yL+ZDb+9T0ELG4VIFo/2anAOz8SvBdlqEnQnvJ3M7Scq56DvtjY0VY88bByRZB0D4J0u8olBcfrXTVONXsh4og==}
