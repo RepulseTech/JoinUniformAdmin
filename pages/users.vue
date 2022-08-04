@@ -13,7 +13,7 @@ await usersStore.initUsers()
 </script>
 
 <template>
-  <div class="italic flex flex-col gap-4 items-center mb-8">
+  <div class="flex flex-col gap-4 items-center mb-8">
     <p v-if="loading">
       Loading....
     </p>
