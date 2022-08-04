@@ -18,7 +18,6 @@ specifiers:
   '@nuxtjs/tailwindcss': ^5.3.1
   '@pinia/nuxt': ^0.3.0
   '@tailwindcss/typography': ^0.5.4
-  '@vueuse/components': ^9.1.0
   '@vueuse/nuxt': ^9.0.2
   autoprefixer: ^10.4.8
   cross-env: ^7.0.3
@@ -53,7 +52,6 @@ devDependencies:
   '@nuxtjs/tailwindcss': 5.3.1
   '@pinia/nuxt': 0.3.1_typescript@4.7.4
   '@tailwindcss/typography': 0.5.4
-  '@vueuse/components': 9.1.0
   '@vueuse/nuxt': 9.0.2
   autoprefixer: 10.4.8
   cross-env: 7.0.3
@@ -2405,35 +2403,12 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
     dev: true
 
-  /@vueuse/components/9.1.0:
-    resolution: {integrity: sha512-8LeCIYZSzQBNlgEWwVmxT9Zs4desJO7w/7gFcq9XT5kEzPs8AsUnAfFSK8fasvgpD2Fu0NtzXnaiFYkKZsSFLQ==}
-    dependencies:
-      '@vueuse/core': 9.1.0
-      '@vueuse/shared': 9.1.0
-      vue-demi: 0.13.5
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
-
   /@vueuse/core/9.0.2:
     resolution: {integrity: sha512-kOIqaQPSs7OSByWg1ulEKRUJbsq3FmbJiUr0RhEKpt3O1Uhl4DrDj85DUbQBABVYgPvSaY6AE/fP3/FOcRIOoQ==}
     dependencies:
       '@types/web-bluetooth': 0.0.15
       '@vueuse/metadata': 9.0.2
       '@vueuse/shared': 9.0.2
-      vue-demi: 0.13.5
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
-
-  /@vueuse/core/9.1.0:
-    resolution: {integrity: sha512-BIroqvXEqt826aE9r3K5cox1zobuPuAzdYJ36kouC2TVhlXvFKIILgFVWrpp9HZPwB3aLzasmG3K87q7TSyXZg==}
-    dependencies:
-      '@types/web-bluetooth': 0.0.15
-      '@vueuse/metadata': 9.1.0
-      '@vueuse/shared': 9.1.0
       vue-demi: 0.13.5
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2450,10 +2425,6 @@ packages:
 
   /@vueuse/metadata/9.0.2:
     resolution: {integrity: sha512-TRh+TNUYXiodatSAxd0xZc7sh4RfktVVgNFIN7TCQXKyancbCAcWfHvKfgdlX8LcqSBxKoHVa90n0XdUbboTkw==}
-    dev: true
-
-  /@vueuse/metadata/9.1.0:
-    resolution: {integrity: sha512-8OEhlog1iaAGTD3LICZ8oBGQdYeMwByvXetOtAOZCJOzyCRSwqwdggTsmVZZ1rkgYIEqgUBk942AsAPwM21s6A==}
     dev: true
 
   /@vueuse/nuxt/9.0.2:
@@ -2476,15 +2447,6 @@ packages:
 
   /@vueuse/shared/9.0.2:
     resolution: {integrity: sha512-KwBDefK2ljLESpt0ffe2w8EGUCb3IaMfTzeytB/uHHjHOGOEIHLHHyn8W2C48uGQEvoe5iwaW4Bfp8cRUM6IFA==}
-    dependencies:
-      vue-demi: 0.13.5
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
-
-  /@vueuse/shared/9.1.0:
-    resolution: {integrity: sha512-pB/3njQu4tfJJ78ajELNda0yMG6lKfpToQW7Soe09CprF1k3QuyoNi1tBNvo75wBDJWD+LOnr+c4B5HZ39jY/Q==}
     dependencies:
       vue-demi: 0.13.5
     transitivePeerDependencies:

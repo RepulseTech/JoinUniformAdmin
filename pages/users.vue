@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { UseTimeAgo } from '@vueuse/components'
+// import { UseTimeAgo } from '@vueuse/components'
 const me = useSupabaseUser()
 watchEffect(() => {
   if (!me.value)
@@ -69,7 +69,7 @@ await usersStore.initUsers()
           <TableItem>
             {{ user.phone ?? '-' }}
           </TableItem>
-          <TableItem>
+          <!-- <TableItem>
             <UseTimeAgo v-slot="{ timeAgo }" :time="user.lastSignInAt">
               {{ timeAgo }}
             </UseTimeAgo>
@@ -78,7 +78,7 @@ await usersStore.initUsers()
             <UseTimeAgo v-slot="{ timeAgo }" :time="user.lastSignInAt">
               {{ timeAgo }}
             </UseTimeAgo>
-          </TableItem>
+          </TableItem> -->
           <TableItem>
             <button class="btn btn-outline btn-sm btn-primary">
               Delete
