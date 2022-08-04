@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    '@nuxt/image-edge',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/supabase',

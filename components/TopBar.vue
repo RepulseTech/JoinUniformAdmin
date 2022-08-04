@@ -15,7 +15,7 @@ const { handleLogout } = useAuthStore()
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <nuxt-img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" />
+            <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y">
           </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
