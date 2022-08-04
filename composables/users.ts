@@ -14,11 +14,13 @@ export const useUsersStore = defineStore('users', () => {
   async function initUsers() {
     const { data, error: _ } = await useAsyncData('users', () => usersQuery())
 
-    if (data)
-      usersConnection.value = data.value.users
-
-    if (_.value)
+    if (_.value) {
       error.value = mapGraphQLReponseToError(_.value)
+      return
+    }
+
+    if (data.value)
+      usersConnection.value = data.value.users
   }
 
   async function fetchUsers() {
