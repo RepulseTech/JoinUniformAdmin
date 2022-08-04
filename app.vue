@@ -14,7 +14,7 @@ useHead({
 <template>
   <div class="antialiased">
     <NuxtLayout>
-      <NuxtLoadingIndicator />
+      <!-- <NuxtLoadingIndicator /> -->
       <NuxtPage />
     </NuxtLayout>
   </div>

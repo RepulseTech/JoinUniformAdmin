@@ -14,10 +14,13 @@ export const useEntriesStore = defineStore('entries', () => {
 
   async function initEntries() {
     const { data, error: _ } = await useAsyncData('entries', () => fetchAllEntries())
-    entriesConnection.value = data.value.entries
-
-    if (_.value)
+    if (_.value) {
       error.value = mapGraphQLReponseToError(_.value)
+      return
+    }
+
+    if (data.value)
+      entriesConnection.value = data.value.entries
   }
 
   async function fetchEntries() {
