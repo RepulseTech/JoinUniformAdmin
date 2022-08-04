@@ -3951,12 +3951,60 @@ export type VideoUpdateFilter = {
   title: InputMaybe<StringFieldComparison>;
 };
 
+export type EntriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EntriesQuery = { entries: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date, subEntries: Array<{ id: string, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date, categories: Array<{ id: string, name: string, education: string, syllabus: string | null | undefined, disabled: Date | null | undefined, updated: Date, examPackTemplate: { id: string } | null | undefined }> }> } }> } };
+
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type UsersQuery = { users: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, email: string | null | undefined, phone: string | null | undefined, lastSignInAt: Date, rawUserMetaData: any, created: Date, updated: Date } }> } };
 
 
+export const EntriesDocument = gql`
+    query entries {
+  entries {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        id
+        name
+        iconUrl
+        disabled
+        created
+        updated
+        subEntries {
+          id
+          name
+          iconUrl
+          disabled
+          created
+          updated
+          categories {
+            id
+            name
+            education
+            syllabus
+            disabled
+            disabled
+            updated
+            examPackTemplate {
+              id
+            }
+          }
+        }
+      }
+      cursor
+    }
+  }
+}
+    `;
 export const UsersDocument = gql`
     query users {
   users(filter: {email: {notLike: "admin@joinuniform.com"}}) {
@@ -3989,6 +4037,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    entries(variables?: EntriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<EntriesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<EntriesQuery>(EntriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'entries', 'query');
+    },
     users(variables?: UsersQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UsersQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<UsersQuery>(UsersDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'users', 'query');
     }

@@ -10,7 +10,7 @@ const { handleLogin } = authStore
   <div class="flex items-center justify-center min-h-screen bg-base-200">
     <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg rounded-lg">
       <div class="flex justify-center">
-        <img class="h-20 w-20" src="~/assets/img/logo.svg" alt="JoinUniform SVG">
+        <nuxt-img class="h-20 w-20" src="/img/logo.svg" alt="JoinUniform SVG" />
       </div>
 
       <h3 class="mt-4 text-2xl font-bold text-center">

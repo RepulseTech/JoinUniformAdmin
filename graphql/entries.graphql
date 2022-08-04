@@ -1,0 +1,42 @@
+query entries {
+  entries {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        id
+        name
+        iconUrl
+        disabled
+        created
+        updated
+        subEntries {
+          id
+          name
+          iconUrl
+          disabled
+          created
+          updated
+          categories {
+            id
+            name
+            education
+            syllabus
+            disabled
+            disabled
+            updated
+            examPackTemplate {
+              id
+            }
+            
+          }
+        }
+      }
+      cursor
+    }
+  }
+}

@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import type { UserConnection } from '~~/graphql/generated'
+import type { UsersQuery } from '~~/graphql/generated'
 import { useGqlSdk } from '~~/graphql/sdk'
 import { mapGraphQLReponseToError } from '~~/utils/graphql-response'
 
 export const useUsersStore = defineStore('users', () => {
   const { users: usersQuery } = useGqlSdk()
 
-  const usersConnection = ref<UserConnection | undefined>(undefined)
+  const usersConnection = ref<UsersQuery['users'] | undefined>(undefined)
   const error = ref<string | undefined>(undefined)
   const loading = ref(false)
   const users = computed(() => usersConnection.value?.edges?.map(({ node }) => node) || [])
