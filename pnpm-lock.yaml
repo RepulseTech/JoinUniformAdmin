@@ -29,7 +29,6 @@ specifiers:
   firebase-functions-test: ^2.4.0
   graphql: ^16.6.0
   graphql-request: ^5.0.0
-  hookable-beta: Kir4Kun/hookable-beta
   nuxt: ^3.0.0-rc.10
   pinia: ^2.0.22
   typescript: ^4.7.4
@@ -66,7 +65,6 @@ devDependencies:
   firebase-admin: 11.0.1
   firebase-functions: 3.23.0_firebase-admin@11.0.1
   firebase-functions-test: 2.4.0_oovw67o7yeqltnvs3uxbojjzjq
-  hookable-beta: github.com/Kir4Kun/hookable-beta/c7fde8cfad81047fd81ecdd321f47405177508c1
   nuxt: 3.0.0-rc.10_4brgkhw6cq4me3drk3kxrpb2mm
   pinia: 2.0.22_typescript@4.7.4
   typescript: 4.7.4
@@ -10698,10 +10696,4 @@ packages:
       archiver-utils: 2.1.0
       compress-commons: 4.1.1
       readable-stream: 3.6.0
-    dev: true
-
-  github.com/Kir4Kun/hookable-beta/c7fde8cfad81047fd81ecdd321f47405177508c1:
-    resolution: {tarball: https://codeload.github.com/Kir4Kun/hookable-beta/tar.gz/c7fde8cfad81047fd81ecdd321f47405177508c1}
-    name: hookable
-    version: 5.3.0
     dev: true
