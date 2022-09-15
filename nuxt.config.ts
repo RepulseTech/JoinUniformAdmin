@@ -44,6 +44,7 @@ export default defineNuxtConfig({
   alias: {
     'graphql/language/parser': 'graphql/language/parser.mjs',
     'graphql/language/printer': 'graphql/language/printer.mjs',
+    'hookable': 'hookable-beta',
   },
   runtimeConfig: {
     public: {
