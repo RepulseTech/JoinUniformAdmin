@@ -31,6 +31,9 @@ jobs:
           path: node_modules
           key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
 
+      - name: Install pnpm
+        run: npm i pnpm -g
+
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: pnpm i
