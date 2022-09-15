@@ -1,0 +1,8 @@
+name = "joinuniform"
+main = "./.output/server/index.mjs"
+workers_dev = true
+compatibility_date = "2022-09-10"
+account_id = "8cc943ee1f1e84fa29e799073d0d3b91"
+
+[site]
+bucket = ".output/public"
