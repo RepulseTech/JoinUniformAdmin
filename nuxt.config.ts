@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
@@ -44,7 +46,7 @@ export default defineNuxtConfig({
   alias: {
     'graphql/language/parser': 'graphql/language/parser.mjs',
     'graphql/language/printer': 'graphql/language/printer.mjs',
-    'hookable': 'hookable-beta',
+    'hookable': resolve(__dirname, './libs/hookable/index.mjs'),
   },
   runtimeConfig: {
     public: {
