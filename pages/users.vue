@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { UseTimeAgo } from '@vueuse/components'
-const me = useSupabaseUser()
-watchEffect(() => {
-  if (!me.value)
-    navigateTo('/login', { replace: true })
+
+definePageMeta({
+  middleware: 'auth',
 })
 
 const usersStore = useUsersStore()

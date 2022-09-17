@@ -1,9 +1,3 @@
-<script setup lang="ts">
-definePageMeta({
-  middleware: 'auth',
-})
-</script>
-
 <template>
   <div class="flex">
     <aside class="h-screen sticky top-0">

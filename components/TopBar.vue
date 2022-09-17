@@ -1,10 +1,4 @@
 <script setup lang="ts">
-const me = useSupabaseUser()
-watchEffect(() => {
-  if (!me.value)
-    navigateTo('/login', { replace: true })
-})
-
 const { handleLogout } = useAuthStore()
 </script>
 

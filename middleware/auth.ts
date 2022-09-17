@@ -3,5 +3,5 @@ export default defineNuxtRouteMiddleware((to) => {
 
   if (!(user.value))
     // reroute to login saving the current destination in the redirect query param
-    return navigateTo({ name: 'login', query: { redirect: to.path } })
+    return navigateTo({ path: '/login', query: { redirect: to.path } })
 })

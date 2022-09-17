@@ -5,10 +5,13 @@ definePageMeta({
 useHead({
   title: 'Login - JoinUniform',
 })
+
+const route = useRoute()
+
 const user = useSupabaseUser()
 watchEffect(() => {
   if (user.value)
-    navigateTo('/', { replace: true })
+    navigateTo(`${route.query.redirect || '/'}`, { replace: true })
 })
 </script>
 
