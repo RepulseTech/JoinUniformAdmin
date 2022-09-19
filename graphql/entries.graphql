@@ -1,5 +1,5 @@
 query entries {
-  entries {
+  entries(filter: { parentId: { is: null } }) {
     pageInfo {
       hasNextPage
       hasPreviousPage
@@ -9,30 +9,22 @@ query entries {
     edges {
       node {
         id
+        parentId
         name
         iconUrl
         disabled
         created
         updated
-        subEntries {
+        categories {
           id
           name
-          iconUrl
+          education
+          syllabus
           disabled
-          created
+          disabled
           updated
-          categories {
+          examPackTemplate {
             id
-            name
-            education
-            syllabus
-            disabled
-            disabled
-            updated
-            examPackTemplate {
-              id
-            }
-            
           }
         }
       }

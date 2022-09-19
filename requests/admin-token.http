@@ -1,0 +1,1 @@
+POST {{$dotenv EDGE_URL}}/admin-token

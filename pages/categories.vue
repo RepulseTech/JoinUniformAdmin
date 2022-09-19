@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { UseTimeAgo } from '@vueuse/components'
+
+import IcOutlineRemoveRedEye from '~icons/ic/outline-remove-red-eye'
 
 definePageMeta({
   middleware: 'auth',
 })
 
-const usersStore = useUsersStore()
-const { users, loading } = storeToRefs(usersStore)
-await usersStore.initUsers()
+const entriesStore = useEntriesStore()
+const { entries, loading } = storeToRefs(entriesStore)
+await entriesStore.initEntries()
 </script>
 
 <template>
@@ -16,7 +17,7 @@ await usersStore.initUsers()
     <p v-if="loading">
       Loading....
     </p>
-    <Table>
+    <Table v-for="entry in entries" :key="entry.id">
       <template #header>
         <TableHeadItem>
           #
@@ -25,23 +26,20 @@ await usersStore.initUsers()
           Name
         </TableHeadItem>
         <TableHeadItem>
-          Email
+          Template
         </TableHeadItem>
         <TableHeadItem>
-          Phone
+          Syllabus
         </TableHeadItem>
         <TableHeadItem>
-          Last Activity
-        </TableHeadItem>
-        <TableHeadItem>
-          Joined At
+          Activated
         </TableHeadItem>
         <TableHeadItem>
           Actions
         </TableHeadItem>
       </template>
       <template #body>
-        <TableRow v-for="(user, i) in users" :key="user.id">
+        <TableRow v-for="(category, i) in entry.categories" :key="category.id">
           <TableItem>
             {{ i + 1 }}.
           </TableItem>
@@ -49,41 +47,42 @@ await usersStore.initUsers()
             <div class="flex items-center space-x-3">
               <div class="avatar">
                 <div class="mask mask-squircle w-12 h-12">
-                  <img :src="user.rawUserMetaData.picture">
+                  <img :src="entry.iconUrl">
                 </div>
               </div>
-              <div>
-                <div class="font-bold">
-                  {{ user.rawUserMetaData.name }}
-                </div>
-                <div class="text-sm opacity-50">
-                  {{ user.rawUserMetaData.email_verified ? 'Verified' : 'Unverified' }}
-                </div>
+              <div class="font-bold">
+                {{ category.name }}
               </div>
             </div>
           </TableItem>
           <TableItem>
-            {{ user.email }}
+            <button class="btn gap-1 btn-ghost btn-sm">
+              <IcOutlineRemoveRedEye />
+              View
+            </button>
           </TableItem>
           <TableItem>
-            {{ user.phone ?? '-' }}
+            <button class="btn gap-1 btn-ghost btn-sm">
+              <IcOutlineRemoveRedEye />
+              View
+            </button>
           </TableItem>
           <TableItem>
-            <UseTimeAgo v-slot="{ timeAgo }" :time="user.lastSignInAt">
-              {{ timeAgo }}
-            </UseTimeAgo>
-          </TableItem>
-          <TableItem>
-            <UseTimeAgo v-slot="{ timeAgo }" :time="user.created">
-              {{ timeAgo }}
-            </UseTimeAgo>
+            <input type="checkbox" class="toggle toggle-sm toggle-primary" checked>
           </TableItem>
           <TableItem>
             <ActionButton />
+            <!-- <div class="flex gap-2">
+              <button class="btn btn-ghost btn-circle btn-sm">
+                <MaterialSymbolsEdit />
+              </button>
+              <button class="btn btn-error btn-ghost btn-circle btn-sm" style="color: red">
+                <IcRoundDelete />
+              </button>
+            </div> -->
           </TableItem>
         </TableRow>
       </template>
     </Table>
   </div>
 </template>
-

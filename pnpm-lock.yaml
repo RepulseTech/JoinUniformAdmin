@@ -10,9 +10,16 @@ specifiers:
   '@graphql-codegen/typescript-operations': ^2.5.3
   '@headlessui/vue': ^1.7.1
   '@iconify-json/carbon': ^1.1.7
+  '@iconify-json/charm': ^1.1.5
   '@iconify-json/heroicons-outline': ^1.1.4
   '@iconify-json/heroicons-solid': ^1.1.5
+  '@iconify-json/ic': ^1.1.9
+  '@iconify-json/ion': ^1.1.3
+  '@iconify-json/material-symbols': ^1.1.18
+  '@iconify-json/mdi': ^1.1.29
+  '@iconify-json/ooui': ^1.1.12
   '@iconify-json/twemoji': ^1.1.5
+  '@iconify-json/zondicons': ^1.1.2
   '@nuxtjs/color-mode': ^3.1.5
   '@nuxtjs/supabase': ^0.1.25
   '@nuxtjs/tailwindcss': ^5.3.3
@@ -48,9 +55,16 @@ devDependencies:
   '@graphql-codegen/typescript-operations': 2.5.3_graphql@16.6.0
   '@headlessui/vue': 1.7.1
   '@iconify-json/carbon': 1.1.7
+  '@iconify-json/charm': 1.1.5
   '@iconify-json/heroicons-outline': 1.1.4
   '@iconify-json/heroicons-solid': 1.1.5
+  '@iconify-json/ic': 1.1.9
+  '@iconify-json/ion': 1.1.3
+  '@iconify-json/material-symbols': 1.1.18
+  '@iconify-json/mdi': 1.1.29
+  '@iconify-json/ooui': 1.1.12
   '@iconify-json/twemoji': 1.1.5
+  '@iconify-json/zondicons': 1.1.2
   '@nuxtjs/color-mode': 3.1.5
   '@nuxtjs/supabase': 0.1.25
   '@nuxtjs/tailwindcss': 5.3.3
@@ -1575,6 +1589,12 @@ packages:
       '@iconify/types': 1.1.0
     dev: true
 
+  /@iconify-json/charm/1.1.5:
+    resolution: {integrity: sha512-HdvJGpbzjlaF6z8Tpv1Ar42K0vZANglrxgHuNBeCt182N1BUQqRFbMGg19XJ4UWZRPXLtMoTRW/HvuPY6UpDUQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
   /@iconify-json/heroicons-outline/1.1.4:
     resolution: {integrity: sha512-H59TKT8dK6SDonC0NXeT021Erhq7n0apg+41cUDFgv3Zps4x+2t2Sd3QWI5cs6sW/kpOlY8DTP0xUtF5T/bp4w==}
     dependencies:
@@ -1587,8 +1607,44 @@ packages:
       '@iconify/types': 1.1.0
     dev: true
 
+  /@iconify-json/ic/1.1.9:
+    resolution: {integrity: sha512-yRHx4AnNNf5kpWVnNMaeXGYnLmaR2tkGsjSc//FaI7LhljUaDkiawUvmnYbjh6M61O78EeEoNk8HgYJVqb+y8A==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/ion/1.1.3:
+    resolution: {integrity: sha512-s7uPWzfogdVw5rkWhBnAWG29SO3f1+AfOsHiJIQDPZwkSsNnES2omIC7PFbDuTIGCgCHZna59aq2AQIf7pdc7w==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/material-symbols/1.1.18:
+    resolution: {integrity: sha512-U8QsTXOCfbJC38BmGtsldoR97Ba0hCJ58oSHCNa56R89ZMLNpIzfEi+WqzNdj7CRlGiNr/BwcKc75/TCEFgjWg==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/mdi/1.1.29:
+    resolution: {integrity: sha512-klGuStNuyOHJIaCK36XWiXuUnnxKaZfGXGh+RVf4hbB2Pyvp//PgNvluz8uK32remmQDydzPr+ipvqbenxzQ2g==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/ooui/1.1.12:
+    resolution: {integrity: sha512-izeN0Da85a22zXqbC7qROgRRcFFiTee3fLPYqOxFNlGLM6tIHpyOdD2mrHF8EWOCeGNuXUD5qbM2kiKbo4xxzQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
   /@iconify-json/twemoji/1.1.5:
     resolution: {integrity: sha512-1sTyrLUrMF7QhXS8a9XOd2ySgxgESQTRvhtN471QFdqIaXMi7oWB5UUFh0z984s/al4Iclet+O8BZfuhM9t7lg==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/zondicons/1.1.2:
+    resolution: {integrity: sha512-AbEeMP3uEFSj0tRM9cjLyUxNhadyte4/yfDh1AbzGgOyfPauQbH1IkhxQScmiRGKH6g6dd+JQsUGvsSGgTxDcQ==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true

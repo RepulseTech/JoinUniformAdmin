@@ -192,7 +192,7 @@ export type AnnouncementFilterEntryFilter = {
   id: InputMaybe<IdFilterComparison>;
   name: InputMaybe<StringFieldComparison>;
   or: InputMaybe<Array<AnnouncementFilterEntryFilter>>;
-  parentId: InputMaybe<StringFieldComparison>;
+  parentId: InputMaybe<IdFilterComparison>;
 };
 
 export type AnnouncementInput = {
@@ -473,7 +473,7 @@ export type CategoryFilterEntryFilter = {
   id: InputMaybe<IdFilterComparison>;
   name: InputMaybe<StringFieldComparison>;
   or: InputMaybe<Array<CategoryFilterEntryFilter>>;
-  parentId: InputMaybe<StringFieldComparison>;
+  parentId: InputMaybe<IdFilterComparison>;
 };
 
 export type CategoryFilterExamPackTemplateFilter = {
@@ -989,7 +989,7 @@ export type Entry = {
   iconUrl: Scalars['String'];
   id: Scalars['ID'];
   name: Scalars['String'];
-  parentId: Maybe<Scalars['String']>;
+  parentId: Maybe<Scalars['ID']>;
   subEntries: Array<Entry>;
   updated: Scalars['DateTime'];
 };
@@ -1009,7 +1009,7 @@ export type EntrySubEntriesArgs = {
 export type EntryAggregateGroupBy = {
   id: Maybe<Scalars['ID']>;
   name: Maybe<Scalars['String']>;
-  parentId: Maybe<Scalars['String']>;
+  parentId: Maybe<Scalars['ID']>;
 };
 
 export type EntryConnection = {
@@ -1030,7 +1030,7 @@ export type EntryDeleteFilter = {
   id: InputMaybe<IdFilterComparison>;
   name: InputMaybe<StringFieldComparison>;
   or: InputMaybe<Array<EntryDeleteFilter>>;
-  parentId: InputMaybe<StringFieldComparison>;
+  parentId: InputMaybe<IdFilterComparison>;
 };
 
 export type EntryDeleteResponse = {
@@ -1039,7 +1039,7 @@ export type EntryDeleteResponse = {
   iconUrl: Maybe<Scalars['String']>;
   id: Maybe<Scalars['ID']>;
   name: Maybe<Scalars['String']>;
-  parentId: Maybe<Scalars['String']>;
+  parentId: Maybe<Scalars['ID']>;
   updated: Maybe<Scalars['DateTime']>;
 };
 
@@ -1055,7 +1055,7 @@ export type EntryFilter = {
   id: InputMaybe<IdFilterComparison>;
   name: InputMaybe<StringFieldComparison>;
   or: InputMaybe<Array<EntryFilter>>;
-  parentId: InputMaybe<StringFieldComparison>;
+  parentId: InputMaybe<IdFilterComparison>;
 };
 
 export type EntryInput = {
@@ -1067,13 +1067,13 @@ export type EntryInput = {
 export type EntryMaxAggregate = {
   id: Maybe<Scalars['ID']>;
   name: Maybe<Scalars['String']>;
-  parentId: Maybe<Scalars['String']>;
+  parentId: Maybe<Scalars['ID']>;
 };
 
 export type EntryMinAggregate = {
   id: Maybe<Scalars['ID']>;
   name: Maybe<Scalars['String']>;
-  parentId: Maybe<Scalars['String']>;
+  parentId: Maybe<Scalars['ID']>;
 };
 
 export type EntrySort = {
@@ -1093,7 +1093,7 @@ export type EntryUpdateFilter = {
   id: InputMaybe<IdFilterComparison>;
   name: InputMaybe<StringFieldComparison>;
   or: InputMaybe<Array<EntryUpdateFilter>>;
-  parentId: InputMaybe<StringFieldComparison>;
+  parentId: InputMaybe<IdFilterComparison>;
 };
 
 export type ExamPack = {
@@ -3232,7 +3232,7 @@ export type UpdateEntry = {
   iconUrl: InputMaybe<Scalars['String']>;
   id: InputMaybe<Scalars['ID']>;
   name: InputMaybe<Scalars['String']>;
-  parentId: InputMaybe<Scalars['String']>;
+  parentId: InputMaybe<Scalars['ID']>;
   updated: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -3954,7 +3954,12 @@ export type VideoUpdateFilter = {
 export type EntriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type EntriesQuery = { entries: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date, subEntries: Array<{ id: string, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date, categories: Array<{ id: string, name: string, education: string, syllabus: string | null | undefined, disabled: Date | null | undefined, updated: Date, examPackTemplate: { id: string } | null | undefined }> }> } }> } };
+export type EntriesQuery = { entries: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, parentId: string | null | undefined, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date, categories: Array<{ id: string, name: string, education: string, syllabus: string | null | undefined, disabled: Date | null | undefined, updated: Date, examPackTemplate: { id: string } | null | undefined }> } }> } };
+
+export type TemplatesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TemplatesQuery = { categories: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, name: string, examPackTemplate: { id: string, disabled: Date | null | undefined, created: Date, updated: Date } | null | undefined } }> } };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3964,7 +3969,7 @@ export type UsersQuery = { users: { pageInfo: { hasNextPage: boolean | null | un
 
 export const EntriesDocument = gql`
     query entries {
-  entries {
+  entries(filter: {parentId: {is: null}}) {
     pageInfo {
       hasNextPage
       hasPreviousPage
@@ -3974,33 +3979,51 @@ export const EntriesDocument = gql`
     edges {
       node {
         id
+        parentId
         name
         iconUrl
         disabled
         created
         updated
-        subEntries {
+        categories {
           id
           name
-          iconUrl
+          education
+          syllabus
           disabled
-          created
+          disabled
           updated
-          categories {
+          examPackTemplate {
             id
-            name
-            education
-            syllabus
-            disabled
-            disabled
-            updated
-            examPackTemplate {
-              id
-            }
           }
         }
       }
       cursor
+    }
+  }
+}
+    `;
+export const TemplatesDocument = gql`
+    query templates {
+  categories {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        examPackTemplate {
+          id
+          disabled
+          created
+          updated
+        }
+      }
     }
   }
 }
@@ -4039,6 +4062,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     entries(variables?: EntriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<EntriesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<EntriesQuery>(EntriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'entries', 'query');
+    },
+    templates(variables?: TemplatesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<TemplatesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<TemplatesQuery>(TemplatesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'templates', 'query');
     },
     users(variables?: UsersQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UsersQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<UsersQuery>(UsersDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'users', 'query');

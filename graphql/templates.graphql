@@ -1,0 +1,23 @@
+query templates {
+  categories {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        examPackTemplate {
+          id
+          disabled
+          created
+          updated
+        }
+      }
+    }
+  }
+}

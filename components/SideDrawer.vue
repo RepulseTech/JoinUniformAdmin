@@ -1,44 +1,52 @@
 <script setup lang="ts">
+import MdiViewDashboard from '~icons/mdi/view-dashboard'
+import MdiAccountSupervisor from '~icons/mdi/account-supervisor'
+import IonIosPaper from '~icons/ion/ios-paper'
+import MdiBriefcaseEdit from '~icons/mdi/briefcase-edit'
+import ZondiconsAnnouncement from '~icons/zondicons/announcement'
+import MaterialSymbolsLiveTvOutline from '~icons/material-symbols/live-tv-outline'
+import OouiArticlesRtl from '~icons/ooui/articles-rtl'
+import MaterialSymbolsLogoutRounded from '~icons/material-symbols/logout-rounded'
 const navItems = [
   {
     text: 'Dashboard',
     url: '/',
+    icon: MdiViewDashboard,
   },
   {
     text: 'Users',
     url: '/users',
+    icon: MdiAccountSupervisor,
   },
   {
-    text: 'Entries',
-    url: '/entries',
-  },
-  {
-    text: 'Templates',
-    url: '/templates',
+    text: 'Categories',
+    url: '/categories',
+    icon: MaterialSymbolsLogoutRounded,
   },
   {
     text: 'Exams',
     url: '/exams',
+    icon: IonIosPaper,
   },
   {
     text: 'Questions',
     url: '/questions',
-  },
-  {
-    text: 'Syllabus',
-    url: '/syllabus',
+    icon: MdiBriefcaseEdit,
   },
   {
     text: 'Announcements',
     url: '/announcements',
+    icon: ZondiconsAnnouncement,
   },
   {
     text: 'Videos',
     url: '/videos',
+    icon: MaterialSymbolsLiveTvOutline,
   },
   {
     text: 'Articles',
     url: '/articles',
+    icon: OouiArticlesRtl,
   },
 ]
 </script>
@@ -60,7 +68,7 @@ const navItems = [
     <ul class="menu bg-base-100 w-56 p-2 rounded-box">
       <li v-for="item in navItems" :key="item.text">
         <NuxtLink :to="item.url">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+          <component :is="item.icon" />
           {{ item.text }}
         </NuxtLink>
       </li>
@@ -68,7 +76,7 @@ const navItems = [
     <div class="text-center bottom-0 absolute w-full">
       <hr class="m-0">
       <p class="py-2 text-sm text-gray-700">
-        tailwind-elements.com
+        Made with ❤️ by Repulse
       </p>
     </div>
   </div>
@@ -77,6 +85,6 @@ const navItems = [
 <style scoped>
 .router-link-active {
   background-color: #529B03;
-  color: #DCFFB8
+  color: white
 }
 </style>
