@@ -32,3 +32,22 @@ query entries {
     }
   }
 }
+
+mutation createOneEntry($input: CreateOneEntryInput!) {
+  createOneEntry(input: $input) {
+    id
+    parentId
+    name
+    iconUrl
+    disabled
+    created
+    updated
+  }
+}
+
+mutation deleteOneEntry($id: ID!) {
+  deleteOneEntry(input: { id: $id }) {
+    id
+  }
+}
+

@@ -1,11 +1,9 @@
 <template>
   <div class="w-full">
     <table class="table w-full">
-      <thead>
-        <tr>
-          <slot name="header" />
-        </tr>
-      </thead>
+      <tr class="bg-white border-b-2">
+        <slot name="header" />
+      </tr>
       <tbody>
         <slot name="body" />
       </tbody>

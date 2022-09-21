@@ -3956,6 +3956,20 @@ export type EntriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type EntriesQuery = { entries: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, parentId: string | null | undefined, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date, categories: Array<{ id: string, name: string, education: string, syllabus: string | null | undefined, disabled: Date | null | undefined, updated: Date, examPackTemplate: { id: string } | null | undefined }> } }> } };
 
+export type CreateOneEntryMutationVariables = Exact<{
+  input: CreateOneEntryInput;
+}>;
+
+
+export type CreateOneEntryMutation = { createOneEntry: { id: string, parentId: string | null | undefined, name: string, iconUrl: string, disabled: Date | null | undefined, created: Date, updated: Date } };
+
+export type DeleteOneEntryMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteOneEntryMutation = { deleteOneEntry: { id: string | null | undefined } };
+
 export type TemplatesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4000,6 +4014,26 @@ export const EntriesDocument = gql`
       }
       cursor
     }
+  }
+}
+    `;
+export const CreateOneEntryDocument = gql`
+    mutation createOneEntry($input: CreateOneEntryInput!) {
+  createOneEntry(input: $input) {
+    id
+    parentId
+    name
+    iconUrl
+    disabled
+    created
+    updated
+  }
+}
+    `;
+export const DeleteOneEntryDocument = gql`
+    mutation deleteOneEntry($id: ID!) {
+  deleteOneEntry(input: {id: $id}) {
+    id
   }
 }
     `;
@@ -4062,6 +4096,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     entries(variables?: EntriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<EntriesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<EntriesQuery>(EntriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'entries', 'query');
+    },
+    createOneEntry(variables: CreateOneEntryMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateOneEntryMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateOneEntryMutation>(CreateOneEntryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createOneEntry', 'mutation');
+    },
+    deleteOneEntry(variables: DeleteOneEntryMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteOneEntryMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteOneEntryMutation>(DeleteOneEntryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteOneEntry', 'mutation');
     },
     templates(variables?: TemplatesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<TemplatesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<TemplatesQuery>(TemplatesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'templates', 'query');
