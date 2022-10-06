@@ -1,21 +1,25 @@
 <script setup lang="ts">
-import type { EntryInput } from '~~/graphql/generated'
+import type { CategoryInput, EntryInput } from '~~/graphql/generated'
 import { fileToBase64 } from '~~/utils/file-reader'
 import type { EntryType } from '~~/utils/types'
 
-const { createEntryHandler, onClose } = defineProps<{
+const { createEntryHandler, createCategoryHandler, onClose } = defineProps<{
   show: boolean
   onClose: () => void
   entries: EntryType[]
   createEntryHandler: (entry: EntryInput) => Promise<void>
+  createCategoryHandler: (category: CategoryInput) => Promise<void>
 }>()
 
 const loading = ref(false)
 
 const itemType = ref('entry')
+
+/* -------------------------------------------------------------------------- */
+/*                                    Entry                                   */
+/* -------------------------------------------------------------------------- */
 const file = ref<File | null>()
 const fileUrl = ref('')
-
 const entryName = ref('')
 
 onUnmounted(() => {
@@ -57,6 +61,30 @@ async function onEntryCreate() {
     loading.value = false
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                  Category                                  */
+/* -------------------------------------------------------------------------- */
+const selectedEntryId = ref('')
+const categoryName = ref('')
+const categoryEducation = ref('')
+
+async function onCategoryCreate() {
+  if (!selectedEntryId.value || !categoryName.value || !categoryEducation.value)
+    return
+
+  try {
+    loading.value = true
+    await createCategoryHandler({ entryId: selectedEntryId.value, name: categoryName.value, education: categoryEducation.value, syllabus: '' })
+    onClose()
+  }
+  catch (error) {
+    console.log(error)
+  }
+  finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>
@@ -79,14 +107,14 @@ async function onEntryCreate() {
       <br>
       <div class="flex gap-32 items-center">
         <div v-if="itemType === 'entry'">
-          <div class="form-control w-full max-w-xs">
+          <div class="form-control w-full">
             <label class="label">
               <span class="label-text text-base">Entry name</span>
             </label>
-            <input v-model="entryName" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs text-lg">
+            <input v-model="entryName" type="text" placeholder="Ex: Indian Army" class="input input-bordered w-full text-lg">
           </div>
           <br>
-          <div class="form-control w-full max-w-xs">
+          <div class="form-control w-full">
             <label class="label">
               <span class="label-text text-base">Entry logo</span>
             </label>
@@ -94,15 +122,27 @@ async function onEntryCreate() {
           </div>
         </div>
         <div v-if="itemType === 'category'">
-          <div class="form-control w-full max-w-xs">
+          <div class="form-control w-full">
             <label class="label">
               <span class="label-text text-base font-bold">Pick select exising entry</span>
             </label>
-            <select class="select select-bordered">
-              <option v-for="entry in entries" :key="entry.id">
+            <select v-model="selectedEntryId" class="select select-bordered">
+              <option v-for="entry in entries" :key="entry.id" :value="entry.id">
                 {{ entry.name }}
               </option>
             </select>
+          </div>
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text text-base">Category name</span>
+            </label>
+            <input v-model="categoryName" type="text" placeholder="Ex: Military Police" class="input input-bordered w-full text-lg">
+          </div>
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text text-base">Category Education</span>
+            </label>
+            <input v-model="categoryEducation" type="text" placeholder="Ex: 10th or 12th" class="input input-bordered w-full text-lg">
           </div>
         </div>
         <div v-if="fileUrl && itemType === 'entry'">
@@ -112,7 +152,7 @@ async function onEntryCreate() {
       </div>
     </template>
     <template #footer>
-      <button :class="`btn btn-primary ${loading && 'btn-ghost loading'}`" @click="onEntryCreate">
+      <button :class="`btn btn-primary ${loading && 'btn-ghost loading'}`" @click="itemType === 'entry' ? onEntryCreate() : onCategoryCreate()">
         {{ loading ? 'Creating...' : 'Create' }}
       </button>
     </template>

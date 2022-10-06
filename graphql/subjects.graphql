@@ -1,0 +1,20 @@
+query subjects {
+  subjects {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        iconUrl
+        created
+        updated
+      }
+    }
+  }
+}

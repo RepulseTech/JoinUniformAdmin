@@ -1,0 +1,54 @@
+query Announcements {
+  announcements {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        title
+        content
+        type
+        qualificationDescription
+        educationQualification
+        officialURL
+        location
+        applicationStartDate
+        applicationEndDate
+        ageStartDate
+        ageEndDate
+        examStartDate
+        examEndDate
+        expiry
+        id
+        entry {
+          id
+          name
+        }
+        created
+        updated
+      }
+    }
+  }
+}
+
+mutation CreateOneAnnouncement($input: CreateOneAnnouncementInput!) {
+  createOneAnnouncement(input: $input) {
+    id
+  }
+}
+
+mutation UpdateOneAnnouncement($input: UpdateOneAnnouncementInput!) {
+  updateOneAnnouncement(input: $input) {
+    id
+  }
+}
+
+mutation DeleteOneAnnouncement($id: ID!) {
+  deleteOneAnnouncement(input: { id: $id }) {
+    id
+  }
+}

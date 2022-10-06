@@ -3951,6 +3951,72 @@ export type VideoUpdateFilter = {
   title: InputMaybe<StringFieldComparison>;
 };
 
+export type AnnouncementsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AnnouncementsQuery = { announcements: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { title: string, content: string, type: string, qualificationDescription: string, educationQualification: string, officialURL: string, location: string, applicationStartDate: Date, applicationEndDate: Date, ageStartDate: Date, ageEndDate: Date, examStartDate: Date, examEndDate: Date, expiry: Date, id: string, created: Date, updated: Date, entry: { id: string, name: string } | null | undefined } }> } };
+
+export type CreateOneAnnouncementMutationVariables = Exact<{
+  input: CreateOneAnnouncementInput;
+}>;
+
+
+export type CreateOneAnnouncementMutation = { createOneAnnouncement: { id: string } };
+
+export type UpdateOneAnnouncementMutationVariables = Exact<{
+  input: UpdateOneAnnouncementInput;
+}>;
+
+
+export type UpdateOneAnnouncementMutation = { updateOneAnnouncement: { id: string } };
+
+export type DeleteOneAnnouncementMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteOneAnnouncementMutation = { deleteOneAnnouncement: { id: string | null | undefined } };
+
+export type AriclesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AriclesQuery = { articles: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, title: string, content: string, created: Date, updated: Date } }> } };
+
+export type CreateOneArticleMutationVariables = Exact<{
+  input: CreateOneArticleInput;
+}>;
+
+
+export type CreateOneArticleMutation = { createOneArticle: { id: string, title: string, content: string, created: Date, updated: Date } };
+
+export type UpdateOneArticleMutationVariables = Exact<{
+  input: UpdateOneArticleInput;
+}>;
+
+
+export type UpdateOneArticleMutation = { updateOneArticle: { id: string, title: string, content: string, created: Date, updated: Date } };
+
+export type DeleteOneArticleMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteOneArticleMutation = { deleteOneArticle: { id: string | null | undefined } };
+
+export type CreateOneCategoryMutationVariables = Exact<{
+  input: CreateOneCategoryInput;
+}>;
+
+
+export type CreateOneCategoryMutation = { createOneCategory: { id: string } };
+
+export type DeleteOneCategoryMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteOneCategoryMutation = { deleteOneCategory: { id: string | null | undefined } };
+
 export type EntriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3970,6 +4036,11 @@ export type DeleteOneEntryMutationVariables = Exact<{
 
 export type DeleteOneEntryMutation = { deleteOneEntry: { id: string | null | undefined } };
 
+export type SubjectsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SubjectsQuery = { subjects: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, name: string, iconUrl: string, created: Date, updated: Date } }> } };
+
 export type TemplatesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3980,7 +4051,157 @@ export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type UsersQuery = { users: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, email: string | null | undefined, phone: string | null | undefined, lastSignInAt: Date, rawUserMetaData: any, created: Date, updated: Date } }> } };
 
+export type VideosQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type VideosQuery = { videos: { pageInfo: { hasNextPage: boolean | null | undefined, hasPreviousPage: boolean | null | undefined, startCursor: string | null | undefined, endCursor: string | null | undefined }, edges: Array<{ cursor: string, node: { id: string, remarks: string | null | undefined, title: string, URL: string, created: Date, updated: Date, category: { id: string, name: string } } }> } };
+
+export type CreateOneVideoMutationVariables = Exact<{
+  input: CreateOneVideoInput;
+}>;
+
+
+export type CreateOneVideoMutation = { createOneVideo: { id: string, remarks: string | null | undefined, title: string, URL: string, created: Date, updated: Date } };
+
+export type UpdateOneVideoMutationVariables = Exact<{
+  input: UpdateOneVideoInput;
+}>;
+
+
+export type UpdateOneVideoMutation = { updateOneVideo: { id: string, remarks: string | null | undefined, title: string, URL: string, created: Date, updated: Date } };
+
+export type DeleteOneVideoMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteOneVideoMutation = { deleteOneVideo: { id: string | null | undefined } };
+
+
+export const AnnouncementsDocument = gql`
+    query Announcements {
+  announcements {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        title
+        content
+        type
+        qualificationDescription
+        educationQualification
+        officialURL
+        location
+        applicationStartDate
+        applicationEndDate
+        ageStartDate
+        ageEndDate
+        examStartDate
+        examEndDate
+        expiry
+        id
+        entry {
+          id
+          name
+        }
+        created
+        updated
+      }
+    }
+  }
+}
+    `;
+export const CreateOneAnnouncementDocument = gql`
+    mutation CreateOneAnnouncement($input: CreateOneAnnouncementInput!) {
+  createOneAnnouncement(input: $input) {
+    id
+  }
+}
+    `;
+export const UpdateOneAnnouncementDocument = gql`
+    mutation UpdateOneAnnouncement($input: UpdateOneAnnouncementInput!) {
+  updateOneAnnouncement(input: $input) {
+    id
+  }
+}
+    `;
+export const DeleteOneAnnouncementDocument = gql`
+    mutation DeleteOneAnnouncement($id: ID!) {
+  deleteOneAnnouncement(input: {id: $id}) {
+    id
+  }
+}
+    `;
+export const AriclesDocument = gql`
+    query Aricles {
+  articles {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        title
+        content
+        created
+        updated
+      }
+    }
+  }
+}
+    `;
+export const CreateOneArticleDocument = gql`
+    mutation CreateOneArticle($input: CreateOneArticleInput!) {
+  createOneArticle(input: $input) {
+    id
+    title
+    content
+    created
+    updated
+  }
+}
+    `;
+export const UpdateOneArticleDocument = gql`
+    mutation UpdateOneArticle($input: UpdateOneArticleInput!) {
+  updateOneArticle(input: $input) {
+    id
+    title
+    content
+    created
+    updated
+  }
+}
+    `;
+export const DeleteOneArticleDocument = gql`
+    mutation DeleteOneArticle($id: ID!) {
+  deleteOneArticle(input: {id: $id}) {
+    id
+  }
+}
+    `;
+export const CreateOneCategoryDocument = gql`
+    mutation createOneCategory($input: CreateOneCategoryInput!) {
+  createOneCategory(input: $input) {
+    id
+  }
+}
+    `;
+export const DeleteOneCategoryDocument = gql`
+    mutation deleteOneCategory($id: ID!) {
+  deleteOneCategory(input: {id: $id}) {
+    id
+  }
+}
+    `;
 export const EntriesDocument = gql`
     query entries {
   entries(filter: {parentId: {is: null}}) {
@@ -4037,6 +4258,28 @@ export const DeleteOneEntryDocument = gql`
   }
 }
     `;
+export const SubjectsDocument = gql`
+    query subjects {
+  subjects {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        iconUrl
+        created
+        updated
+      }
+    }
+  }
+}
+    `;
 export const TemplatesDocument = gql`
     query templates {
   categories {
@@ -4086,6 +4329,64 @@ export const UsersDocument = gql`
   }
 }
     `;
+export const VideosDocument = gql`
+    query Videos {
+  videos {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        remarks
+        title
+        URL
+        category {
+          id
+          name
+        }
+        created
+        updated
+      }
+    }
+  }
+}
+    `;
+export const CreateOneVideoDocument = gql`
+    mutation CreateOneVideo($input: CreateOneVideoInput!) {
+  createOneVideo(input: $input) {
+    id
+    remarks
+    title
+    URL
+    created
+    updated
+  }
+}
+    `;
+export const UpdateOneVideoDocument = gql`
+    mutation UpdateOneVideo($input: UpdateOneVideoInput!) {
+  updateOneVideo(input: $input) {
+    id
+    remarks
+    title
+    URL
+    created
+    updated
+  }
+}
+    `;
+export const DeleteOneVideoDocument = gql`
+    mutation DeleteOneVideo($id: ID!) {
+  deleteOneVideo(input: {id: $id}) {
+    id
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -4094,6 +4395,36 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    Announcements(variables?: AnnouncementsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AnnouncementsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AnnouncementsQuery>(AnnouncementsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Announcements', 'query');
+    },
+    CreateOneAnnouncement(variables: CreateOneAnnouncementMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateOneAnnouncementMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateOneAnnouncementMutation>(CreateOneAnnouncementDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreateOneAnnouncement', 'mutation');
+    },
+    UpdateOneAnnouncement(variables: UpdateOneAnnouncementMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateOneAnnouncementMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateOneAnnouncementMutation>(UpdateOneAnnouncementDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'UpdateOneAnnouncement', 'mutation');
+    },
+    DeleteOneAnnouncement(variables: DeleteOneAnnouncementMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteOneAnnouncementMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteOneAnnouncementMutation>(DeleteOneAnnouncementDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'DeleteOneAnnouncement', 'mutation');
+    },
+    Aricles(variables?: AriclesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AriclesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AriclesQuery>(AriclesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Aricles', 'query');
+    },
+    CreateOneArticle(variables: CreateOneArticleMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateOneArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateOneArticleMutation>(CreateOneArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreateOneArticle', 'mutation');
+    },
+    UpdateOneArticle(variables: UpdateOneArticleMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateOneArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateOneArticleMutation>(UpdateOneArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'UpdateOneArticle', 'mutation');
+    },
+    DeleteOneArticle(variables: DeleteOneArticleMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteOneArticleMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteOneArticleMutation>(DeleteOneArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'DeleteOneArticle', 'mutation');
+    },
+    createOneCategory(variables: CreateOneCategoryMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateOneCategoryMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateOneCategoryMutation>(CreateOneCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createOneCategory', 'mutation');
+    },
+    deleteOneCategory(variables: DeleteOneCategoryMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteOneCategoryMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteOneCategoryMutation>(DeleteOneCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteOneCategory', 'mutation');
+    },
     entries(variables?: EntriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<EntriesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<EntriesQuery>(EntriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'entries', 'query');
     },
@@ -4103,11 +4434,26 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     deleteOneEntry(variables: DeleteOneEntryMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteOneEntryMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<DeleteOneEntryMutation>(DeleteOneEntryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteOneEntry', 'mutation');
     },
+    subjects(variables?: SubjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SubjectsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SubjectsQuery>(SubjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'subjects', 'query');
+    },
     templates(variables?: TemplatesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<TemplatesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<TemplatesQuery>(TemplatesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'templates', 'query');
     },
     users(variables?: UsersQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UsersQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<UsersQuery>(UsersDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'users', 'query');
+    },
+    Videos(variables?: VideosQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<VideosQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<VideosQuery>(VideosDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Videos', 'query');
+    },
+    CreateOneVideo(variables: CreateOneVideoMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateOneVideoMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateOneVideoMutation>(CreateOneVideoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CreateOneVideo', 'mutation');
+    },
+    UpdateOneVideo(variables: UpdateOneVideoMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateOneVideoMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateOneVideoMutation>(UpdateOneVideoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'UpdateOneVideo', 'mutation');
+    },
+    DeleteOneVideo(variables: DeleteOneVideoMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteOneVideoMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteOneVideoMutation>(DeleteOneVideoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'DeleteOneVideo', 'mutation');
     }
   };
 }

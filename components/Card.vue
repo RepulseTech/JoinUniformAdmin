@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-base-100 shadow-xl">
-    <slot name="header" />
     <div class="card-body">
+      <slot name="header" />
       <h2 class="card-title">
         <slot name="title" />
       </h2>

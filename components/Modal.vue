@@ -16,7 +16,7 @@ defineProps<{
     <!-- Full-screen container to center the panel -->
     <div class="fixed inset-0 flex items-center justify-center">
       <!-- The actual dialog panel -->
-      <DialogPanel class="modal-box w-full max-w-4xl bg-white">
+      <DialogPanel class="modal-box w-full max-w-2xl bg-white">
         <div class="border-b-4 pb-4">
           <div class="flex items-center justify-between">
             <h3 class="font-bold text-xl">

@@ -1,0 +1,53 @@
+query Videos {
+  videos {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        remarks
+        title
+        URL
+        category {
+          id
+          name
+        }
+        created
+        updated
+      }
+    }
+  }
+}
+
+mutation CreateOneVideo($input: CreateOneVideoInput!) {
+  createOneVideo(input: $input) {
+    id
+    remarks
+    title
+    URL
+    created
+    updated
+  }
+}
+
+mutation UpdateOneVideo($input: UpdateOneVideoInput!) {
+  updateOneVideo(input: $input) {
+    id
+    remarks
+    title
+    URL
+    created
+    updated
+  }
+}
+
+mutation DeleteOneVideo($id: ID!) {
+  deleteOneVideo(input: { id: $id }) {
+    id
+  }
+}

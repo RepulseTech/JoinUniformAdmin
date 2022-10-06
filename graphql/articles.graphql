@@ -1,0 +1,46 @@
+query Aricles {
+  articles {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        title
+        content
+        created
+        updated
+      }
+    }
+  }
+}
+
+mutation CreateOneArticle($input: CreateOneArticleInput!) {
+  createOneArticle(input: $input) {
+    id
+    title
+    content
+    created
+    updated
+  }
+}
+
+mutation UpdateOneArticle($input: UpdateOneArticleInput!) {
+  updateOneArticle(input: $input) {
+    id
+    title
+    content
+    created
+    updated
+  }
+}
+
+mutation DeleteOneArticle($id: ID!) {
+  deleteOneArticle(input: { id: $id }) {
+    id
+  }
+}

@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
-import type { EntriesQuery, EntryInput } from '~~/graphql/generated'
+import type { CategoryInput, EntriesQuery, EntryInput } from '~~/graphql/generated'
 import { useGqlSdk } from '~~/graphql/sdk'
 import { mapGraphQLReponseToError } from '~~/utils/graphql-response'
 
 export const useEntriesStore = defineStore('entries', () => {
-  const { entries: fetchAllEntries, createOneEntry, deleteOneEntry } = useGqlSdk()
+  const { entries: fetchAllEntries, createOneEntry, deleteOneEntry, createOneCategory, deleteOneCategory } = useGqlSdk()
 
   const entriesConnection = ref<EntriesQuery['entries'] | undefined>(undefined)
   const error = ref<string | undefined>(undefined)
@@ -47,6 +47,16 @@ export const useEntriesStore = defineStore('entries', () => {
     }
   }
 
+  async function createCategory(category: CategoryInput) {
+    try {
+      await createOneCategory({ input: { category } })
+      await fetchEntries()
+    }
+    catch (e) {
+      error.value = mapGraphQLReponseToError(e)
+    }
+  }
+
   async function deleteEntry(id: string) {
     try {
       await deleteOneEntry({ id })
@@ -57,5 +67,15 @@ export const useEntriesStore = defineStore('entries', () => {
     }
   }
 
-  return { initEntries, fetchEntries, loading, entries, createEntry, deleteEntry, error, pageInfo }
+  async function deleteCategory(id: string) {
+    try {
+      await deleteOneCategory({ id })
+      await fetchEntries()
+    }
+    catch (e) {
+      error.value = mapGraphQLReponseToError(e)
+    }
+  }
+
+  return { initEntries, fetchEntries, loading, entries, createEntry, createCategory, deleteEntry, deleteCategory, error, pageInfo }
 })

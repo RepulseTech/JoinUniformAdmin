@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 
 import IcOutlineRemoveRedEye from '~icons/ic/outline-remove-red-eye'
-import type { EntryInput } from '~~/graphql/generated'
+import MaterialSymbolsAdd from '~icons/material-symbols/add'
 
 definePageMeta({
   middleware: 'auth',
@@ -30,7 +30,7 @@ await entriesStore.initEntries()
           New Entry / Category
         </button>
       </div>
-      <AddEntryModal v-if="isOpen" :show="isOpen" :on-close="() => setIsOpen(false)" :entries="entries" :create-entry-handler="entriesStore.createEntry" />
+      <AddEntryModal v-if="isOpen" :show="isOpen" :on-close="() => setIsOpen(false)" :entries="entries" :create-entry-handler="entriesStore.createEntry" :create-category-handler="entriesStore.createCategory" />
       <div v-for="entry in entries" :key="entry.id" class="mt-2">
         <div class="flex justify-between space-x-3 bg-white p-4 rounded-lg rounded-b-none">
           <div class="flex space-x-3 items-center">
@@ -78,9 +78,9 @@ await entriesStore.initEntries()
                 </div>
               </TableItem>
               <TableItem>
-                <button class="btn gap-1 btn-ghost btn-sm">
-                  <IcOutlineRemoveRedEye />
-                  View
+                <button class="btn gap-1 btn-ghost btn-sm" @click="$router.push(`/categories/${category.id}/new-template`)">
+                  <MaterialSymbolsAdd />
+                  Add
                 </button>
               </TableItem>
               <TableItem>
@@ -93,15 +93,7 @@ await entriesStore.initEntries()
                 <input type="checkbox" class="toggle toggle-sm toggle-primary" checked>
               </TableItem>
               <TableItem>
-                <ActionButton />
-                <!-- <div class="flex gap-2">
-              <button class="btn btn-ghost btn-circle btn-sm">
-                <MaterialSymbolsEdit />
-              </button>
-              <button class="btn btn-error btn-ghost btn-circle btn-sm" style="color: red">
-                <IcRoundDelete />
-              </button>
-            </div> -->
+                <TableActionButton @on-remove="() => entriesStore.deleteCategory(category.id)" />
               </TableItem>
             </TableRow>
           </template>
@@ -115,3 +107,4 @@ await entriesStore.initEntries()
     </div>
   </div>
 </template>
+

@@ -6,8 +6,13 @@
 
     <div class="flex flex-col w-full">
       <TopBar />
-      <main class="relative py-5 px-10 text-center min-h-screen bg-base-200">
-        <slot />
+      <main class="relative py-5 px-10 min-h-screen bg-base-200">
+        <Suspense>
+          <slot />
+          <template #fallback>
+            Loading...
+          </template>
+        </Suspense>
       </main>
     </div>
   </div>

@@ -1,0 +1,11 @@
+mutation createOneCategory($input: CreateOneCategoryInput!) {
+  createOneCategory(input: $input) {
+    id
+  }
+}
+
+mutation deleteOneCategory($id: ID!) {
+  deleteOneCategory(input: { id: $id }) {
+    id
+  }
+}
